@@ -18,9 +18,13 @@ public class RentService
             Rent rent = new Rent(rentDate, numberOfDays, fee, rentedDevice, user);
             rents.Add(rent);
         }
+        else
+        {
+            Console.WriteLine("Wybrany sprzęt jest niedostępny lub przekroczono limit wypożyczeń");
+        }
     }
 
-    public static double ReturnDevice(Device device)
+    public static void ReturnDevice(Device device)
     {
         double penalty = 0;
         foreach (var rent in rents)
@@ -32,13 +36,13 @@ public class RentService
                 {
                     int numberOfDays = (rent.RealReturnDate.Date - rent.ReturnDate.Date).Days;
                     penalty = numberOfDays * rent.Fee;
+                    rent.User.loan += penalty;
                 }
 
                 rent.User.Devices.Remove(device);
                 device.Status = AvailableStatus.Available;
             }
         }
-        return penalty;
     }
 
     public static void DisplayListOfOverdueRents()

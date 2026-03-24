@@ -49,4 +49,30 @@ public class DevicesService
             }
         }
     }
+    public static void GenerateShortReport()
+    {
+        int numberOfAvailable = 0;
+        int numberOfBorrowed = 0;
+        int numberOfUnavailable = 0;
+        foreach (Device d in devices)
+        {
+            if (d.Status == AvailableStatus.Available)
+            {
+                numberOfAvailable++;
+            }
+
+            if (d.Status == AvailableStatus.Unavailable)
+            {
+                numberOfUnavailable++;
+            }
+
+            if (d.Status == AvailableStatus.Borrowed)
+            {
+                numberOfBorrowed++;
+            }
+        }
+        Console.WriteLine("Liczba wypożyczonych urządzeń: " + numberOfBorrowed);
+        Console.WriteLine("Liczba dostępnych urządzeń: " + numberOfAvailable);
+        Console.WriteLine("Liczba niedostępnych urządzeń: " + numberOfUnavailable);
+    }
 }

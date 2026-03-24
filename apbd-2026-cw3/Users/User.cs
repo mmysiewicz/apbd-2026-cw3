@@ -7,6 +7,7 @@ public abstract class User
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string Surname { get; set; }
+    public double loan { get; set; }
 
     public abstract int GetNumberOfPossibleRentDevices();
 
