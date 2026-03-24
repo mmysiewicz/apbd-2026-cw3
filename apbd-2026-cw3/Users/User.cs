@@ -9,6 +9,15 @@ public abstract class User
     public string Surname { get; set; }
     public double loan { get; set; }
 
+    public User(string firstName, string surname)
+    {
+        IdForNumeration++;
+        Id = IdForNumeration;
+        FirstName = firstName;
+        Surname = surname;
+        loan = 0;
+        Devices = new List<Device>();
+    }
     public abstract int GetNumberOfPossibleRentDevices();
 
     public void DisplayListOfRentedDevices()

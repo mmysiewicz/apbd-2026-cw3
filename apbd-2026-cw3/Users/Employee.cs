@@ -2,12 +2,8 @@
 
 public class Employee : User
 {
-    public Employee(string firstName, string surname)
+    public Employee(string firstName, string surname) : base(firstName, surname)
     {
-        IdForNumeration++;
-        Id = IdForNumeration;
-        FirstName = firstName;
-        Surname = surname;
     }
 
     public override int GetNumberOfPossibleRentDevices()

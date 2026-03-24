@@ -2,12 +2,8 @@
 
 public class Student : User
 {
-    public Student(string firstName, string surname)
+    public Student(string firstName, string surname) : base(firstName, surname)
     {
-        IdForNumeration++;
-        Id = IdForNumeration;
-        FirstName = firstName;
-        Surname = surname;
     }
 
     public override int GetNumberOfPossibleRentDevices()

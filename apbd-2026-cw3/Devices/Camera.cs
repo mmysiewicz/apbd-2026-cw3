@@ -7,12 +7,8 @@ public class Camera : Device
     public bool WiFi { get; set; }
     public bool HdmiOutput { get; set; }
 
-    public Camera(string name, string recordingResolution, string matrix, bool wiFi, bool hdmiOutput)
+    public Camera(string name, string recordingResolution, string matrix, bool wiFi, bool hdmiOutput) : base(name)
     {
-        IdForNumeration++;
-        Id =  IdForNumeration;
-        Name = name;
-        Status = AvailableStatus.Available;
         RecordingResolution = recordingResolution;
         Matrix = matrix;
         WiFi = wiFi;

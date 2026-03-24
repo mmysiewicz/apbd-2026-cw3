@@ -15,6 +15,7 @@ public class Rent
         ReturnDate = RentDate.AddDays(numberOfDays);
         Fee = fee;
         RentedDevice = rentedDevice;
+        RealReturnDate = DateTime.MinValue;
         User = user;
     }
 }

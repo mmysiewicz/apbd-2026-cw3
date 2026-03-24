@@ -1,15 +1,10 @@
-﻿using System.Linq.Expressions;
-
-namespace apbd_2026_cw3.Services;
+﻿namespace apbd_2026_cw3.Services;
 
 public class DevicesService
 {
-    public static List<Device> devices { get; set; }
+    public List<Device> devices { get; set; } = new List<Device>();
 
-    public DevicesService()
-    {
-        devices = new List<Device>();
-    }
+    public DevicesService() {}
     
     public void AddDevice(Device device)
     {
@@ -45,11 +40,11 @@ public class DevicesService
         {
             if (device.Id == d.Id)
             {
-                device.Status = AvailableStatus.Unavailable;
+                d.Status = AvailableStatus.Unavailable;
             }
         }
     }
-    public static void GenerateShortReport()
+    public void GenerateShortReport()
     {
         int numberOfAvailable = 0;
         int numberOfBorrowed = 0;

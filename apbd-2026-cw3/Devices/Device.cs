@@ -7,4 +7,12 @@ public abstract class Device
     public string Name { get; set; }
     public AvailableStatus Status { get; set; }
     
+    public Device(string name)
+    {
+        IdForNumeration++;
+        Id =  IdForNumeration;
+        Name = name;
+        Status = AvailableStatus.Available;
+        
+    }
 }

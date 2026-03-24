@@ -2,20 +2,19 @@
 
 public class RentService
 {
-    public static List<Rent> rents { get; set; }
+    public List<Rent> rents { get; set; } = new List<Rent>();
 
-    public RentService()
-    {
-        rents = new List<Rent>();
-    }
+    public RentService() {}
 
-    public static void RentDevice(DateTime rentDate, int numberOfDays, double fee, Device rentedDevice, User user)
+    public void RentDevice(DateTime rentDate, int numberOfDays, double fee, Device rentedDevice, User user)
     {
+        
+        
         if (user.GetNumberOfPossibleRentDevices() > user.Devices.Count && rentedDevice.Status == AvailableStatus.Available)
         {
+            Rent rent = new Rent(rentDate, numberOfDays, fee, rentedDevice, user);
             rentedDevice.Status = AvailableStatus.Borrowed;
             user.Devices.Add(rentedDevice);
-            Rent rent = new Rent(rentDate, numberOfDays, fee, rentedDevice, user);
             rents.Add(rent);
         }
         else
@@ -24,28 +23,30 @@ public class RentService
         }
     }
 
-    public static void ReturnDevice(Device device)
+    public void ReturnDevice(Device device, DateTime returnDate)
     {
         double penalty = 0;
         foreach (var rent in rents)
         {
             if (rent.RentedDevice.Id == device.Id)
             {
-                rent.RealReturnDate = DateTime.Now;
-                if (rent.RealReturnDate.Date != rent.ReturnDate.Date)
+                rent.RealReturnDate = returnDate;
+                if ((rent.RealReturnDate.Date - rent.ReturnDate.Date).Days > 0)
                 {
                     int numberOfDays = (rent.RealReturnDate.Date - rent.ReturnDate.Date).Days;
                     penalty = numberOfDays * rent.Fee;
                     rent.User.loan += penalty;
+                    Console.WriteLine("Naliczono opłatę w wysokości: " + penalty);
                 }
 
                 rent.User.Devices.Remove(device);
                 device.Status = AvailableStatus.Available;
+                break;
             }
         }
     }
 
-    public static void DisplayListOfOverdueRents()
+    public void DisplayListOfOverdueRents()
     {
         foreach (var rent in rents)
         {
