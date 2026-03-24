@@ -2,8 +2,9 @@
 
 public abstract class Device
 {
-    public static int IdForNumeration = 1;
+    public static int IdForNumeration = 0;
     public int Id { get; set; }
     public string Name { get; set; }
-    public bool AvailableStatus { get; set; }
+    public AvailableStatus Status { get; set; }
+    
 }

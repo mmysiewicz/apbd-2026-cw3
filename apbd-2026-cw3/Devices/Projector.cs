@@ -5,5 +5,15 @@ public class Projector : Device
     public string Resolution { get; set; }
     public string Matrix { get; set; }
     public int Brightness { get; set; }
-    
+
+    public Projector(string name, string resolution, string matrix, int brightness)
+    {
+        IdForNumeration++;
+        Id =  IdForNumeration;
+        Name = name;
+        Status = AvailableStatus.Available;
+        Resolution = resolution;
+        Matrix = matrix;
+        Brightness = brightness;
+    }
 }
