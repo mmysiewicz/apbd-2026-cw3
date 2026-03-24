@@ -1,8 +1,8 @@
 ﻿namespace apbd_2026_cw3;
 
-public class Student : User
+public class Employee : User
 {
-    public Student(string firstName, string surname)
+    public Employee(string firstName, string surname)
     {
         IdForNumeration++;
         Id = IdForNumeration;
@@ -12,6 +12,6 @@ public class Student : User
 
     public override int GetNumberOfPossibleRentDevices()
     {
-        return 2;
+        return 5;
     }
 }

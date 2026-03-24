@@ -8,4 +8,13 @@ public class Rent
     public double Fee { get; set; }
     public Device RentedDevice { get; set; }
     public User User { get; set; }
+
+    public Rent(DateTime rentDate, int numberOfDays, double fee, Device rentedDevice, User user)
+    {
+        RentDate = rentDate;
+        ReturnDate = RentDate.AddDays(numberOfDays);
+        Fee = fee;
+        RentedDevice = rentedDevice;
+        User = user;
+    }
 }
