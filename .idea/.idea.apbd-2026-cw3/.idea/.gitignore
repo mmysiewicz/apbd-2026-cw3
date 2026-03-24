@@ -3,9 +3,9 @@
 /workspace.xml
 # Rider ignored files
 /projectSettingsUpdater.xml
-/modules.xml
 /.idea.apbd-2026-cw3.iml
 /contentModel.xml
+/modules.xml
 # Ignored default folder with query files
 /queries/
 # Datasource local storage ignored files

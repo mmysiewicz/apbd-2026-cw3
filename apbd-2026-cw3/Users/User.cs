@@ -3,7 +3,28 @@
 public abstract class User
 {
     public static int IdForNumeration = 0;
+    public List<Device> Devices { get; set; }
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string Surname { get; set; }
+    public double loan { get; set; }
+
+    public User(string firstName, string surname)
+    {
+        IdForNumeration++;
+        Id = IdForNumeration;
+        FirstName = firstName;
+        Surname = surname;
+        loan = 0;
+        Devices = new List<Device>();
+    }
+    public abstract int GetNumberOfPossibleRentDevices();
+
+    public void DisplayListOfRentedDevices()
+    {
+        foreach (Device device in Devices)
+        {
+            Console.WriteLine(device.Id + " " + device.Name + " " + device.Status);
+        }
+    }
 }

@@ -6,12 +6,8 @@ public class Projector : Device
     public string Matrix { get; set; }
     public int Brightness { get; set; }
 
-    public Projector(string name, string resolution, string matrix, int brightness)
+    public Projector(string name, string resolution, string matrix, int brightness) : base(name)
     {
-        IdForNumeration++;
-        Id =  IdForNumeration;
-        Name = name;
-        Status = AvailableStatus.Available;
         Resolution = resolution;
         Matrix = matrix;
         Brightness = brightness;

@@ -6,15 +6,10 @@ public class Laptop : Device
     public int RamMemory { get; set; }
     public string GraphicsCard { get; set; }
 
-    public Laptop(string name, string processor, int ramMemory, string graphicsCard)
+    public Laptop(string name, string processor, int ramMemory, string graphicsCard) : base(name)
     {
-        IdForNumeration++;
-        Id =  IdForNumeration;
-        Name = name;
-        Status = AvailableStatus.Available;
         Processor = processor;
         RamMemory = ramMemory;
         GraphicsCard = graphicsCard;
-        
     }
 }
